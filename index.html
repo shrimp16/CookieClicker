@@ -6,7 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!--CSS-->
     <link rel="stylesheet" href="style.css">
+
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap" rel="stylesheet">
+
+    <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -17,11 +25,20 @@
     </div>
 
     <div class="user-panel">
-        <div id="balance">Balance: 0 Cookies</div>
-        <div id="cookie-price">Cookie Price: 1 Cookies</div>
-        <div id="cookies-per-second">Cookies/s: 0 Cookies</div>
-        <div class="cookie">
-            <img draggable="false" id="cookie" src="img/cookie-picture-26897.png" alt="">
+        <div class="user-values">
+            <div id="balance">
+                <p>Balance: 0 Cookies</p>
+            </div>
+            <div id="cookie-price">
+                <p>Cookie Price: 1 Cookies</p>
+            </div>
+            <div id="cookies-per-second">
+                <p>Cookies/s: 0 Cookies</p>
+            </div>
+
+            <div class="cookie">
+                <img draggable="false" id="cookie" src="img/cookie-picture-26897.png" alt="">
+            </div>
         </div>
 
 
@@ -42,7 +59,7 @@
             </div>
 
             <div class="grid-item">
-                <button class="buttons">
+                <button id="mixing-machine" class="buttons">
                     <p class="price">Price: 5000</p>
                     <p class="name">Mixing Machine</p>
                 </button>
@@ -92,9 +109,10 @@
         </div>
 
         <div class="page-navigator">
-            <button id="previous-page" class="buttons"> < </button>
-            <p id="pages"> 1 / 1</p>
-            <button id="next-page" class="buttons"> > </button>
+            <button id="previous-page" class="buttons">
+                < </button>
+                    <p id="pages"> 1 / 1</p>
+                    <button id="next-page" class="buttons"> > </button>
         </div>
 
     </div>

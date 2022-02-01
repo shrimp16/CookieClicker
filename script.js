@@ -87,3 +87,13 @@ $("#grandma").click( () => {
         notEnoughCookies();
     }
 })
+
+$("#mixing-machine").click( () => {
+    if(balance >= mixingMachinePrice){
+        cookiesPerSecond = cookiesPerSecond + mixingMachineProd;
+        balance = balance - mixingMachinePrice;
+        update();
+    }else{
+        notEnoughCookies();
+    }
+})
