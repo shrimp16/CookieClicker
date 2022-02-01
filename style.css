@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: wheat;
+    display: flex;
+    justify-content: center;
+}
+
+.user-panel {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    background-color: burlywood;
+    width: 25rem;
+    height: 40rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.user-panel > * {
+    margin-top: 0.5rem;
+}
+
+.cookie > img{
+    margin-top: 2rem;
+    width: 15rem;
+    height: 15rem;
+}
+
+.cookie > img:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.grid-item {
+    padding: 0.5rem;
+    font-size: 30px;
+    text-align: center;
+}
+
+.buttons {
+    background-color: wheat;
+    font-size: 1.25rem;
+    border-radius: 15px;
+}
+
+.buttons:hover{
+    background-color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
