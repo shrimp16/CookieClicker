@@ -17,6 +17,19 @@ const cookieIslandPrice = 1000000; //1KK
 const cookieDuperPrice = 5000000; //5KK
 const blackMagicPrice = 30000000; // 30KK
 
+//Cookies per second from each upgrade
+const sweetGrandmaProd = 10;
+const mixingMachineProd = 50;
+const cookieShopProd = 300;
+const cookieBuildingProd = 3000;
+const cookieIslandProd = 10000;
+const cookieDuperProd = 50000;
+const blackMagicProd = 300000;
+
+var notEnoughCookies = () => {
+    alert("You don't have enough cookies!");
+}
+
 var update = () => {
 
     if(balance >= 1000000){
@@ -61,6 +74,16 @@ $("#upgrade").click( () => {
         balance = balance - upgradePrice;
         update();
     }else{
-        alert("You don't have enough cookies!");
+        notEnoughCookies();
+    }
+})
+
+$("#grandma").click( () => {
+    if(balance >= sweetGrandmaPrice){
+        cookiesPerSecond = cookiesPerSecond + sweetGrandmaProd;
+        balance = balance - sweetGrandmaPrice;
+        update();
+    }else{
+        notEnoughCookies();
     }
 })
