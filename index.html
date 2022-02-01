@@ -12,12 +12,16 @@
 
 <body>
 
+    <div class="account">
+        <p>ID: <input type="text"> <button id="load">Load</button> <button id="save">Save</button></p>
+    </div>
+
     <div class="user-panel">
         <div id="balance">Balance: 0 Cookies</div>
         <div id="cookie-price">Cookie Price: 1 Cookies</div>
         <div id="cookies-per-second">Cookies/s: 0 Cookies</div>
         <div class="cookie">
-            <img id="cookie" src="img/cookie-picture-26897.png" alt="">
+            <img draggable="false" id="cookie" src="img/cookie-picture-26897.png" alt="">
         </div>
 
 
@@ -58,6 +62,12 @@
             <div class="grid-item">
                 <button class="buttons">Black Magic</button>
             </div>
+        </div>
+
+        <div class="page-navigator">
+            <button class="buttons"> < </button>
+            <p> 1 / 1</p>
+            <button class="buttons"> > </button>
         </div>
 
     </div>

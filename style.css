@@ -6,14 +6,15 @@ body {
     background-color: wheat;
     display: flex;
     justify-content: center;
+    min-width: 90%;
 }
 
 .user-panel {
     font-size: 1.25rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     background-color: burlywood;
     width: 25rem;
-    height: 40rem;
+    height: 41rem;
     border-radius: 15px;
     text-align: center;
 }
@@ -23,7 +24,7 @@ body {
 }
 
 .cookie > img{
-    margin-top: 2rem;
+    margin-top: 0.625rem;
     width: 15rem;
     height: 15rem;
 }
@@ -52,6 +53,31 @@ body {
 }
 
 .buttons:hover{
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.4);
     cursor: pointer;
+}
+
+.account {
+    margin-top: 0.5rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.account > p > button{
+    background-color: wheat;
+    border-radius: 15px;
+}
+
+.account > p > button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+.page-navigator{
+    display: flex;
+}
+
+.page-navigator > * {
+    margin: auto;
 }
