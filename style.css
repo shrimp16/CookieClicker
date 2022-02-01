@@ -57,6 +57,18 @@ body {
     cursor: pointer;
 }
 
+.price {
+    display:none;
+}
+
+.buttons:hover .name{
+    display:none;
+}
+
+.buttons:hover .price{
+    display: block;
+}
+    
 .account {
     margin-top: 0.5rem;
     position: absolute;
