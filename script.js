@@ -3,7 +3,7 @@ var balanceView = document.getElementById("balance");
 var cookiePriceView = document.getElementById("cookie-price");
 var cookiesPerSecondView = document.getElementById("cookies-per-second");
 
-var balance = 0;
+var balance = 30000;
 var cookieValue = 1;
 var cookiesPerSecond = 0;
 
@@ -92,6 +92,26 @@ $("#mixing-machine").click( () => {
     if(balance >= mixingMachinePrice){
         cookiesPerSecond = cookiesPerSecond + mixingMachineProd;
         balance = balance - mixingMachinePrice;
+        update();
+    }else{
+        notEnoughCookies();
+    }
+})
+
+$("#mixing-machine").click( () => {
+    if(balance >= mixingMachinePrice){
+        cookiesPerSecond = cookiesPerSecond + mixingMachineProd;
+        balance = balance - mixingMachinePrice;
+        update();
+    }else{
+        notEnoughCookies();
+    }
+})
+
+$("#shop").click( () => {
+    if(balance >= cookieShopPrice){
+        cookiesPerSecond = cookiesPerSecond + cookieShopProd;
+        balance = balance - cookieShopPrice;
         update();
     }else{
         notEnoughCookies();
