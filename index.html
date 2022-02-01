@@ -7,16 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
 
     <div class="user-panel">
-        <div>Balance: 0 Cookies</div>
-        <div>Cookie Price: 1 Cookies</div>
-        <div>Cookies/s: 0 Cookies</div>
+        <div id="balance">Balance: 0 Cookies</div>
+        <div id="cookie-price">Cookie Price: 1 Cookies</div>
+        <div id="cookies-per-second">Cookies/s: 0 Cookies</div>
         <div class="cookie">
-            <img src="img/cookie-picture-26897.png" alt="">
+            <img id="cookie" src="img/cookie-picture-26897.png" alt="">
         </div>
 
 
@@ -60,6 +61,8 @@
         </div>
 
     </div>
+
+    <script src="script.js"></script>
 
 </body>
 
