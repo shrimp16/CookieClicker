@@ -3,7 +3,7 @@ var balanceView = document.getElementById("balance");
 var cookiePriceView = document.getElementById("cookie-price");
 var cookiesPerSecondView = document.getElementById("cookies-per-second");
 
-var balance = 30000;
+var balance = 300000;
 var cookieValue = 1;
 var cookiesPerSecond = 0;
 
@@ -112,6 +112,16 @@ $("#shop").click( () => {
     if(balance >= cookieShopPrice){
         cookiesPerSecond = cookiesPerSecond + cookieShopProd;
         balance = balance - cookieShopPrice;
+        update();
+    }else{
+        notEnoughCookies();
+    }
+})
+
+$("#building").click( () => {
+    if(balance >= cookieBuildingPrice){
+        cookiesPerSecond = cookiesPerSecond + cookieBuildingProd;
+        balance = balance - cookieBuildingPrice;
         update();
     }else{
         notEnoughCookies();
