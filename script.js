@@ -8,15 +8,7 @@ var cookieValue = 1;
 var cookiesPerSecond = 0;
 
 //Prices
-/*const upgradePrice = 100;
-const sweetGrandmaPrice = 1000;
-const mixingMachinePrice = 5000;
-const cookieShopPrice = 30000;
-const cookieBuildingPrice = 300000; //300K
-const cookieIslandPrice = 1000000; //1KK
-const cookieDuperPrice = 5000000; //5KK
-const blackMagicPrice = 30000000; // 30KK*/
-
+const upgradePrice = 100;
 const prices = [
     1000,
     5000,
@@ -27,6 +19,7 @@ const prices = [
     30000000
 ]
 
+//Cookies per second from each upgrade
 const production = [
     10,
     50,
@@ -37,15 +30,8 @@ const production = [
     300000
 ]
 
-//Cookies per second from each upgrade
-/*const sweetGrandmaProd = 10;
-const mixingMachineProd = 50;
-const cookieShopProd = 300;
-const cookieBuildingProd = 3000;
-const cookieIslandProd = 10000;
-const cookieDuperProd = 50000;
-const blackMagicProd = 300000;*/
 
+//IDs of the buttons
 const buttonsID = [
     "grandma",
     "mixing-machine",
@@ -98,8 +84,19 @@ $("#cookie").click( () => {
     update();
 })
 
+$("#upgrade").click( () => {
+    if(balance >= upgradePrice){
+        cookieValue++;
+        balance = balance - upgradePrice;
+        update();
+    }else{
+        notEnoughCookies();
+    }
+})
+
 function loadPageOne(){
     for(var i = 0; i < buttonsID.length; i++){
+
         let id = buttonsID[i];
         let price = prices[i];
         let prod = production[i];
@@ -113,75 +110,6 @@ function loadPageOne(){
                 notEnoughCookies();
             }
         })
+
     }
 }
-
-/*$("#upgrade").click( () => {
-    if(balance >= upgradePrice){
-        cookieValue++;
-        balance = balance - upgradePrice;
-        update();
-    }else{
-        notEnoughCookies();
-    }
-})
-
-$("#grandma").click( () => {
-    if(balance >= sweetGrandmaPrice){
-        cookiesPerSecond = cookiesPerSecond + sweetGrandmaProd;
-        balance = balance - sweetGrandmaPrice;
-        update();
-    }else{
-        notEnoughCookies();
-    }
-})
-
-$("#mixing-machine").click( () => {
-    if(balance >= mixingMachinePrice){
-        cookiesPerSecond = cookiesPerSecond + mixingMachineProd;
-        balance = balance - mixingMachinePrice;
-        update();
-    }else{
-        notEnoughCookies();
-    }
-})
-
-$("#mixing-machine").click( () => {
-    if(balance >= mixingMachinePrice){
-        cookiesPerSecond = cookiesPerSecond + mixingMachineProd;
-        balance = balance - mixingMachinePrice;
-        update();
-    }else{
-        notEnoughCookies();
-    }
-})
-
-$("#shop").click( () => {
-    if(balance >= cookieShopPrice){
-        cookiesPerSecond = cookiesPerSecond + cookieShopProd;
-        balance = balance - cookieShopPrice;
-        update();
-    }else{
-        notEnoughCookies();
-    }
-})
-
-$("#building").click( () => {
-    if(balance >= cookieBuildingPrice){
-        cookiesPerSecond = cookiesPerSecond + cookieBuildingProd;
-        balance = balance - cookieBuildingPrice;
-        update();
-    }else{
-        notEnoughCookies();
-    }
-})
-
-$("#island").click( () => {
-    if(balance >= cookieIslandPrice){
-        cookiesPerSecond = cookiesPerSecond + cookieIslandProd;
-        balance = balance - cookieIslandPrice;
-        update();
-    }else{
-        notEnoughCookies();
-    }
-})*/
