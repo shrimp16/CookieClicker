@@ -48,6 +48,7 @@ var notEnoughCookies = () => {
 
 var update = () => {
 
+    //NEED TO REFACTOR ASAP
     if(balance >= 1000000){
         balanceView.innerHTML = `<p>Balance: ${balance / 1000000}KK Cookies</p>`;
     }else if(balance >= 100000){
@@ -81,6 +82,7 @@ setInterval(() => {
 
 $("#cookie").click( () => {
     balance = balance + cookieValue;
+    document.getElementById("click").play();
     update();
 })
 
