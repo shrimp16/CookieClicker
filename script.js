@@ -82,7 +82,6 @@ setInterval(() => {
 
 $("#cookie").click( () => {
     balance = balance + cookieValue;
-    document.getElementById("click").play();
     update();
 })
 
@@ -90,6 +89,7 @@ $("#upgrade").click( () => {
     if(balance >= upgradePrice){
         cookieValue++;
         balance = balance - upgradePrice;
+        document.getElementById("click-sound").play();
         update();
     }else{
         notEnoughCookies();
