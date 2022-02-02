@@ -3,6 +3,16 @@ var balanceView = document.getElementById("balance");
 var cookiePriceView = document.getElementById("cookie-price");
 var cookiesPerSecondView = document.getElementById("cookies-per-second");
 
+var grid = document.getElementById("upgrade-grid");
+var cookieImage = document.getElementById("cookie");
+var userMenu = document.getElementById("user-values");
+var waifu = document.getElementById("waifu");
+var waifuImage = document.getElementById("waifu-image");
+
+var pages = document.getElementById("pages");
+
+var currentPage = 1;
+
 var balance = 1000;
 var cookieValue = 1;
 var cookiesPerSecond = 0;
@@ -41,6 +51,10 @@ const buttonsID = [
     "duper",
     "black-magic"
 ];
+
+const images = [
+    "img/02.jpg"
+]
 
 var notEnoughCookies = () => {
     alert("You don't have enough cookies!");
@@ -96,7 +110,7 @@ $("#upgrade").click( () => {
     }
 })
 
-function loadPageOne(){
+document.body.onload = () => {
     for(var i = 0; i < buttonsID.length; i++){
 
         let id = buttonsID[i];
@@ -115,3 +129,32 @@ function loadPageOne(){
 
     }
 }
+
+$("#next-page").click( () => {
+
+    grid.style.display = "none";
+    userMenu.style.display = "none";
+    waifu.style.display = "block";
+    waifuImage.src = images[0];
+
+    if(currentPage >= 2){
+        pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
+    }else{
+        currentPage++;
+        pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
+    }
+})
+
+$("#previous-page").click( () => {
+
+    grid.style.display = "grid";
+    userMenu.style.display = "block";
+    waifu.style.display = "none";
+
+    if(currentPage <= 1){
+        pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
+    }else{
+        currentPage--;
+        pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
+    }
+})

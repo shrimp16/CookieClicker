@@ -18,7 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body onload="loadPageOne()">
+<body>
 
     <audio id="click-sound" src="/sounds/Mouse-Click-02-c-FesliyanStudios.com.mp3">
     </audio>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="user-panel">
-        <div class="user-values">
+        <div id="user-values" class="user-values">
             <div id="balance">
                 <p>Balance: 0 Cookies</p>
             </div>
@@ -45,7 +45,7 @@
         </div>
 
 
-        <div class="grid">
+        <div id="upgrade-grid" class="grid">
 
             <div class="grid-item">
                 <button id="upgrade" class="buttons">
@@ -111,9 +111,15 @@
             </div>
         </div>
 
+        <div id="waifu" class="waifus">
+            <img id="waifu-image" src="img/779e1f2ea40ccf579f3f7ef94225b287.jpg" alt="haha">
+            <button class="buttons"> < </button>
+            <button class="buttons"> > </button>
+        </div>
+
         <div class="page-navigator">
             <button id="previous-page" class="buttons"> < </button>
-            <p id="pages"> 1 / 1</p>
+            <p id="pages"> 1 / 2</p>
             <button id="next-page" class="buttons"> > </button>
         </div>
 

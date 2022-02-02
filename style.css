@@ -99,3 +99,16 @@ body {
 .page-navigator > * {
     margin: auto;
 }
+
+.waifus {
+    display: none;
+    margin: auto;
+    padding-top: 1rem;
+    width: 22rem;
+    height: 35.7rem;
+}
+
+.waifus > img {
+    width: 100%;
+    height: 95%;
+}
