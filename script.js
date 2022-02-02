@@ -3,28 +3,58 @@ var balanceView = document.getElementById("balance");
 var cookiePriceView = document.getElementById("cookie-price");
 var cookiesPerSecondView = document.getElementById("cookies-per-second");
 
-var balance = 300000;
+var balance = 1000;
 var cookieValue = 1;
 var cookiesPerSecond = 0;
 
 //Prices
-const upgradePrice = 100;
+/*const upgradePrice = 100;
 const sweetGrandmaPrice = 1000;
 const mixingMachinePrice = 5000;
 const cookieShopPrice = 30000;
 const cookieBuildingPrice = 300000; //300K
 const cookieIslandPrice = 1000000; //1KK
 const cookieDuperPrice = 5000000; //5KK
-const blackMagicPrice = 30000000; // 30KK
+const blackMagicPrice = 30000000; // 30KK*/
+
+const prices = [
+    1000,
+    5000,
+    30000,
+    300000,
+    1000000,
+    5000000,
+    30000000
+]
+
+const production = [
+    10,
+    50,
+    300,
+    3000,
+    10000,
+    50000,
+    300000
+]
 
 //Cookies per second from each upgrade
-const sweetGrandmaProd = 10;
+/*const sweetGrandmaProd = 10;
 const mixingMachineProd = 50;
 const cookieShopProd = 300;
 const cookieBuildingProd = 3000;
 const cookieIslandProd = 10000;
 const cookieDuperProd = 50000;
-const blackMagicProd = 300000;
+const blackMagicProd = 300000;*/
+
+const buttonsID = [
+    "grandma",
+    "mixing-machine",
+    "shop",
+    "building",
+    "island",
+    "duper",
+    "black-magic"
+];
 
 var notEnoughCookies = () => {
     alert("You don't have enough cookies!");
@@ -68,7 +98,25 @@ $("#cookie").click( () => {
     update();
 })
 
-$("#upgrade").click( () => {
+function loadPageOne(){
+    for(var i = 0; i < buttonsID.length; i++){
+        let id = buttonsID[i];
+        let price = prices[i];
+        let prod = production[i];
+
+        $(`#${id}`).click( () => {
+            if(balance >= price){
+                balance = balance - price;
+                cookiesPerSecond = cookiesPerSecond + prod;
+                update();
+            }else{
+                notEnoughCookies();
+            }
+        })
+    }
+}
+
+/*$("#upgrade").click( () => {
     if(balance >= upgradePrice){
         cookieValue++;
         balance = balance - upgradePrice;
@@ -127,3 +175,13 @@ $("#building").click( () => {
         notEnoughCookies();
     }
 })
+
+$("#island").click( () => {
+    if(balance >= cookieIslandPrice){
+        cookiesPerSecond = cookiesPerSecond + cookieIslandProd;
+        balance = balance - cookieIslandPrice;
+        update();
+    }else{
+        notEnoughCookies();
+    }
+})*/
