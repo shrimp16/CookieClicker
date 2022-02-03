@@ -2,6 +2,7 @@
 let balanceView = document.getElementById("balance");
 let cookiePriceView = document.getElementById("cookie-price");
 let cookiesPerSecondView = document.getElementById("cookies-per-second");
+let waifuBonusView = document.getElementById("waifus-bonus");
 
 let grid = document.getElementById("upgrade-grid");
 let cookieImage = document.getElementById("cookie");
@@ -19,7 +20,7 @@ let currentPage = 1;
 let waifuPointer = 0;
 
 let balance = 0;
-let cookieValue = 1;
+let cookieValue = 1000;
 let cookiesPerSecond = 0;
 
 //Prices
@@ -56,20 +57,23 @@ const buttonsID = [
     "black-magic"
 ];
 
+let waifusPower = 0;
 const waifus = [
     {
         "name": "02",
-        "img": "img/02.jpg",
-        "value": 100000000,
-        "bonus": 50,
-        "obained": false
+        "img": "img/waifus/02.jpg",
+        "price": 100000000,
+        "priceView": "100KK",
+        "bonus": 5,
+        "obtained": false
     },
     {
         "name": "Rias Gremory",
-        "img": "img/rias.png",
-        "value": 100000000,
-        "bonus": 50,
-        "obained": true
+        "img": "img/waifus/rias.png",
+        "price": 500000000,
+        "priceView": "500KK",
+        "bonus": 10,
+        "obtained": false
     }
 ]
 
@@ -104,15 +108,19 @@ function update() {
         cookiesPerSecondView.innerHTML = `<p>Cookies/s: ${cookiesPerSecond} Cookies</p>`;
     }
 
+    waifuBonusView.innerHTML = `<p>Bonus: ${waifusPower}%</p>`;
+
 }
 
 setInterval(() => {
-    balance = balance + cookiesPerSecond;
+    let waifuBonus = cookiesPerSecond * (waifusPower / 100);
+    balance = balance + cookiesPerSecond + waifuBonus;
     update();
 }, 1000)
 
 $("#cookie").click(() => {
-    balance = balance + cookieValue;
+    let waifuBonusOnClick = cookieValue * (waifusPower / 100);
+    balance = balance + cookieValue + waifuBonusOnClick;
     update();
 })
 
@@ -206,13 +214,26 @@ $("#next-waifu").click(() => {
     }
 
     loadWaifu();
+
+})
+
+$("#buy-waifu").click( () => {
+    if(balance >= waifus[waifuPointer].price){
+        balance = balance - waifus[waifuPointer].price;
+        waifus[waifuPointer].obtained = true;
+        waifusPower = waifusPower + waifus[waifuPointer].bonus;
+        update();
+    }else{
+        notEnoughCookies();
+    }
+    loadWaifu();
 })
 
 function loadWaifu() {
 
     waifuImage.style.filter = "blur(10px) grayscale() invert()";
 
-    if(waifus[waifuPointer].obained){
+    if(waifus[waifuPointer].obtained){
         waifuImage.style.filter = "none";
         buyWaifu.style.display = "none";
         ownedWaifu.style.display = "block";
@@ -221,6 +242,7 @@ function loadWaifu() {
         buyWaifu.style.display = "flex";
         buyWaifu.style.margin = "auto";
         ownedWaifu.style.display = "none";
+        waifuPrice.innerText = `Price: ${waifus[waifuPointer].priceView}`;
         waifuPrice.style.display = "block";
     }
 }
