@@ -62,7 +62,7 @@ const waifus = [
         "img": "img/02.jpg",
         "value": 100000000,
         "bonus": 50,
-        "obained": true
+        "obained": false
     },
     {
         "name": "Rias Gremory",
@@ -156,8 +156,6 @@ $("#next-page").click(() => {
     console.log(waifuImage);
     waifuImage.src = waifus[waifuPointer].img;
 
-    waifuImage.style.filter = "blur(10px) grayscale() invert()";
-
     if (currentPage >= 2) {
         pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
     } else {
@@ -165,17 +163,7 @@ $("#next-page").click(() => {
         pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
     }
 
-    if(waifus[waifuPointer].obained){
-        waifuImage.style.filter = "none";
-        buyWaifu.style.display = "none";
-        ownedWaifu.style.display = "block";
-        waifuPrice.style.display = "none";
-    }else{
-        buyWaifu.style.display = "flex";
-        buyWaifu.style.margin = "auto";
-        ownedWaifu.style.display = "none";
-        waifuPrice.style.display = "block";
-    }
+    loadWaifu();
 
 })
 
@@ -191,11 +179,11 @@ $("#previous-page").click(() => {
         currentPage--;
         pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
     }
+
+    loadWaifu();
 })
 
 $("#previous-waifu").click(() => {
-
-    waifuImage.style.filter = "blur(10px) grayscale() invert()";
 
     if (waifuPointer <= 0) {
         waifuImage.src = waifus[waifuPointer].img;
@@ -204,22 +192,11 @@ $("#previous-waifu").click(() => {
         waifuImage.src = waifus[waifuPointer].img;
     }
 
-    if(waifus[waifuPointer].obained){
-        waifuImage.style.filter = "none";
-        buyWaifu.style.display = "none";
-        ownedWaifu.style.display = "block";
-        waifuPrice.style.display = "none";
-    }else{
-        buyWaifu.style.display = "flex";
-        buyWaifu.style.margin = "auto";
-        ownedWaifu.style.display = "none";
-        waifuPrice.style.display = "block";
-    }
+    loadWaifu();
 })
 
 $("#next-waifu").click(() => {
 
-    waifuImage.style.filter = "blur(10px) grayscale() invert()";
 
     if (waifuPointer >= waifus.length - 1) {
         waifuImage.src = waifus[waifuPointer].img;
@@ -228,6 +205,13 @@ $("#next-waifu").click(() => {
         waifuImage.src = waifus[waifuPointer].img;
     }
 
+    loadWaifu();
+})
+
+function loadWaifu() {
+
+    waifuImage.style.filter = "blur(10px) grayscale() invert()";
+
     if(waifus[waifuPointer].obained){
         waifuImage.style.filter = "none";
         buyWaifu.style.display = "none";
@@ -239,4 +223,4 @@ $("#next-waifu").click(() => {
         ownedWaifu.style.display = "none";
         waifuPrice.style.display = "block";
     }
-})
+}
