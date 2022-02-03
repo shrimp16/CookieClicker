@@ -69,7 +69,7 @@ const waifus = [
         "img": "img/rias.png",
         "value": 100000000,
         "bonus": 50,
-        "obained": false
+        "obained": true
     }
 ]
 
@@ -171,7 +171,8 @@ $("#next-page").click(() => {
         ownedWaifu.style.display = "block";
         waifuPrice.style.display = "none";
     }else{
-        buyWaifu.style.display = "block";
+        buyWaifu.style.display = "flex";
+        buyWaifu.style.margin = "auto";
         ownedWaifu.style.display = "none";
         waifuPrice.style.display = "block";
     }
@@ -209,7 +210,8 @@ $("#previous-waifu").click(() => {
         ownedWaifu.style.display = "block";
         waifuPrice.style.display = "none";
     }else{
-        buyWaifu.style.display = "block";
+        buyWaifu.style.display = "flex";
+        buyWaifu.style.margin = "auto";
         ownedWaifu.style.display = "none";
         waifuPrice.style.display = "block";
     }
@@ -219,7 +221,7 @@ $("#next-waifu").click(() => {
 
     waifuImage.style.filter = "blur(10px) grayscale() invert()";
 
-    if (waifuPointer >= waifus.length) {
+    if (waifuPointer >= waifus.length - 1) {
         waifuImage.src = waifus[waifuPointer].img;
     } else {
         waifuPointer++;
