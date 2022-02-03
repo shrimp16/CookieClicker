@@ -60,7 +60,6 @@ const buttonsID = [
 let waifusPower = 0;
 const waifus = [
     {
-        "name": "02",
         "img": "img/waifus/02.jpg",
         "price": 100000000,
         "priceView": "100KK",
@@ -68,13 +67,33 @@ const waifus = [
         "obtained": false
     },
     {
-        "name": "Rias Gremory",
         "img": "img/waifus/rias.png",
-        "price": 500000000,
-        "priceView": "500KK",
+        "price": 300000000,
+        "priceView": "300KK",
         "bonus": 10,
         "obtained": false
-    }
+    },
+    {
+        "img": "img/waifus/akeno.jpg",
+        "price": 500000000,
+        "priceView": "500KK",
+        "bonus": 15,
+        "obtained": false
+    },
+    {
+        "img": "img/waifus/hinata.jpg",
+        "price": 1000000000,
+        "priceView": "1KKK",
+        "bonus": 20,
+        "obtained": false
+    },
+    {
+        "img": "img/waifus/mirajane.png",
+        "price": 5000000000,
+        "priceView": "5KKK",
+        "bonus": 25,
+        "obtained": false
+    },
 ]
 
 let notEnoughCookies = () => {
