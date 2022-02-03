@@ -108,7 +108,29 @@ body {
     height: 35.7rem;
 }
 
-.waifus > img {
-    width: 100%;
-    height: 95%;
+.waifus {
+    position: relative;
 }
+
+.waifus > img {
+    display: block;
+    width: 100%;
+    height: 80%;
+    transition: 0.3s;
+    object-position: center;
+    border-radius: 15px;
+    filter: blur(10px) grayscale() invert();
+}
+
+.waifus > p {
+    font-family: 'Supermercado One', cursive;
+}
+
+.waifus > h2 {
+    font-family: 'Supermercado One', cursive;
+}
+
+.waifus > button:hover {
+    font-family: 'Supermercado One', cursive;
+}
+
