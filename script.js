@@ -1,21 +1,21 @@
 // Properties to use to change the values on the display
-var balanceView = document.getElementById("balance");
-var cookiePriceView = document.getElementById("cookie-price");
-var cookiesPerSecondView = document.getElementById("cookies-per-second");
+let balanceView = document.getElementById("balance");
+let cookiePriceView = document.getElementById("cookie-price");
+let cookiesPerSecondView = document.getElementById("cookies-per-second");
 
-var grid = document.getElementById("upgrade-grid");
-var cookieImage = document.getElementById("cookie");
-var userMenu = document.getElementById("user-values");
-var waifu = document.getElementById("waifu");
-var waifuImage = document.getElementById("waifu-image");
+let grid = document.getElementById("upgrade-grid");
+let cookieImage = document.getElementById("cookie");
+let userMenu = document.getElementById("user-values");
+let waifu = document.getElementById("waifu");
+let waifuImage = document.getElementById("waifu-image");
 
-var pages = document.getElementById("pages");
+let pages = document.getElementById("pages");
 
-var currentPage = 1;
+let currentPage = 1;
 
-var balance = 1000;
-var cookieValue = 1;
-var cookiesPerSecond = 0;
+let balance = 0;
+let cookieValue = 1;
+let cookiesPerSecond = 0;
 
 //Prices
 const upgradePrice = 100;
@@ -40,7 +40,6 @@ const production = [
     300000
 ]
 
-
 //IDs of the buttons
 const buttonsID = [
     "grandma",
@@ -52,15 +51,21 @@ const buttonsID = [
     "black-magic"
 ];
 
-const images = [
-    "img/02.jpg"
+const waifus = [
+    {
+        "name": "02",
+        "img": "img/02.jpg",
+        "value": 100000000,
+        "bonus": 50,
+        "obained": false
+    }
 ]
 
-var notEnoughCookies = () => {
+let notEnoughCookies = () => {
     alert("You don't have enough cookies!");
 }
 
-var update = () => {
+function update() {
 
     //NEED TO REFACTOR ASAP
     if(balance >= 1000000){
@@ -111,7 +116,7 @@ $("#upgrade").click( () => {
 })
 
 document.body.onload = () => {
-    for(var i = 0; i < buttonsID.length; i++){
+    for(let i = 0; i < buttonsID.length; i++){
 
         let id = buttonsID[i];
         let price = prices[i];
@@ -135,7 +140,7 @@ $("#next-page").click( () => {
     grid.style.display = "none";
     userMenu.style.display = "none";
     waifu.style.display = "block";
-    waifuImage.src = images[0];
+    waifuImage.src = waifus[0].img;
 
     if(currentPage >= 2){
         pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
@@ -143,6 +148,7 @@ $("#next-page").click( () => {
         currentPage++;
         pages.innerHTML = `<p id="pages"> ${currentPage} / 2</p>`
     }
+
 })
 
 $("#previous-page").click( () => {
