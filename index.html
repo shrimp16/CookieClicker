@@ -110,36 +110,21 @@
                 </button>
             </div>
         </div>
-
-        <!--Example of locked waifu-->
-        <!--<div id="waifu" class="waifus">
-
-            <img draggable=false src="/img/02.jpg" class="blur">
-
-            <br>
-
-            <p>Price: 1000000</p>
-
-            <br>
-
-            <button class="buttons"> < </button>
-            <button class="buttons">BUY</button>
-            <button class="buttons"> > </button>
-
-        </div>-->
-
+        
         <div id="waifu" class="waifus">
 
-            <img draggable=false src="/img/02.jpg">
+            <img id="waifu-image" draggable=false src="/img/02.jpg" class="blur">
 
             <br>
 
-            <h2>Owned</h2>
+                <p id="waifu-price">Price: 1000000</p>
+                <h2 style="display: none" id="owned-waifu">Owned</h2>
+                
+                <button id="buy-waifu" class="buttons">BUY</button>
 
-            <br>
-
-            <button class="buttons"> < </button>
-            <button class="buttons"> > </button>
+                <button id="previous-waifu" class="buttons"> < </button>
+                <button id="next-waifu" class="buttons"> > </button>
+            
 
         </div>
 
