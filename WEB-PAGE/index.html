@@ -23,17 +23,52 @@
     <audio id="click-sound" src="/sounds/Mouse-Click-02-c-FesliyanStudios.com.mp3">
     </audio>
 
-    <div class="account">
-        <p>ID: <input type="text"> <button id="load">Load</button> <button id="save">Save</button></p>
+    <!--<div class="account">
+        <p>Username: <input type="text" name="" id=""> <button>Save</button></p>
+        <p>Password: <input type="password" name="" id=""><button>Load</button></p>
+    </div>-->
+
+    <!--<div>
+    <p>Username: <input type="text" name="" id=""> <button>Save</button></p>
+    <p>Password: <input type="password" name="" id=""><button>Load</button></p>
+</div>-->
+
+    <div id="account-manager" class="account" style="display: none">
+        <div>
+            <p>User:</p>
+            <p><input type="text" name="" id=""></p>
+            
+        </div>
+        <div>
+            <p>Password:</p>
+            <p><input type="password"></p>
+        </div>
+        <div>
+            <div>
+                <button>Save</button>
+            </div>
+            <div>
+                <button>Load</button>
+            </div>
+            <div>
+                <button id="testeee">Back</button>
+            </div>
+    </div>
     </div>
 
-    <div class="user-panel">
+    <div id="go-to-account" class="go-to-account">
+        <div>
+            <button id="account-button" class="account-button">Account</button>
+        </div>
+    </div>
+
+    <div id="user-panel" class="user-panel">
         <div id="user-values" class="user-values">
             <div id="balance">
                 <p>Balance: 0 Cookies</p>
             </div>
             <div id="cookie-price">
-                <p>Cookie Price: 1 Cookies</p>
+                <p>Cookie Value: 1 Cookies</p>
             </div>
             <div id="cookies-per-second">
                 <p>Cookies/s: 0 Cookies</p>

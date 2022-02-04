@@ -4,6 +4,11 @@ let cookiePriceView = document.getElementById("cookie-price");
 let cookiesPerSecondView = document.getElementById("cookies-per-second");
 let waifuBonusView = document.getElementById("waifus-bonus");
 
+let accountManager = document.getElementById("account-manager");
+let goToAccount = document.getElementById("go-to-account");
+let userPanel = document.getElementById("user-panel");
+
+
 let grid = document.getElementById("upgrade-grid");
 let cookieImage = document.getElementById("cookie");
 let userMenu = document.getElementById("user-values");
@@ -20,7 +25,7 @@ let currentPage = 1;
 let waifuPointer = 0;
 
 let balance = 0;
-let cookieValue = 1000;
+let cookieValue = 1;
 let cookiesPerSecond = 0;
 
 //Prices
@@ -136,6 +141,18 @@ setInterval(() => {
     balance = balance + cookiesPerSecond + waifuBonus;
     update();
 }, 1000)
+
+$("#account-button").click( () => {
+    goToAccount.style.display = "none";
+    accountManager.style.display = "block";
+    userPanel.style.display = "none";
+})
+
+$("#testeee").click( () => {
+    goToAccount.style.display = "flex";
+    accountManager.style.display = "none";
+    userPanel.style.display = "block"
+})
 
 $("#cookie").click(() => {
     let waifuBonusOnClick = cookieValue * (waifusPower / 100);

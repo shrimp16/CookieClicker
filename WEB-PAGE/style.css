@@ -80,16 +80,63 @@ body {
     position: absolute;
     display: flex;
     flex-direction: column;
+    width: 20rem;
+    height: 15rem;
+    background-color: burlywood;
+    border-radius: 15px;
+    font-family: 'Supermercado One', cursive;
 }
 
-.account > p > button{
+.account > div {
+    margin-top: 1rem;
+}
+
+.account > div > p{
+    text-align: center;
+}
+
+.account > div > p > input {
+    border-radius: 15px;
+}
+
+.account > div > div{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 50%;
+    margin-top: 0.5rem;
+}
+
+.account > div > div > button{
+    font-family: 'Supermercado One', cursive;
     background-color: wheat;
     border-radius: 15px;
 }
 
-.account > p > button:hover {
+.account > div > div > button:hover{
     background-color: rgba(255, 255, 255, 0.4);
     cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.account-button {
+    font-family: 'Supermercado One', cursive;
+    background-color: wheat;
+    border-radius: 15px;
+}
+
+.account-button:hover {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+.go-to-account {
+    margin-top: 0.5rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
 }
 
 .page-navigator{
