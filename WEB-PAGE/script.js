@@ -67,35 +67,35 @@ const waifus = [
     {
         "img": "img/waifus/02.jpg",
         "price": 100000000,
-        "priceView": "100KK",
+        "priceView": "100m",
         "bonus": 5,
         "obtained": false
     },
     {
         "img": "img/waifus/rias.png",
         "price": 300000000,
-        "priceView": "300KK",
+        "priceView": "300m",
         "bonus": 10,
         "obtained": false
     },
     {
         "img": "img/waifus/akeno.jpg",
         "price": 500000000,
-        "priceView": "500KK",
+        "priceView": "500m",
         "bonus": 15,
         "obtained": false
     },
     {
         "img": "img/waifus/hinata.jpg",
         "price": 1000000000,
-        "priceView": "1KKK",
+        "priceView": "1b",
         "bonus": 20,
         "obtained": false
     },
     {
         "img": "img/waifus/mirajane.png",
         "price": 5000000000,
-        "priceView": "5KKK",
+        "priceView": "5b",
         "bonus": 25,
         "obtained": false
     },
@@ -107,30 +107,9 @@ let notEnoughCookies = () => {
 
 function update() {
 
-    //NEED TO REFACTOR ASAP
-    if (balance >= 1000000) {
-        balanceView.innerHTML = `<p>Balance: ${balance / 1000000}KK Cookies</p>`;
-    } else if (balance >= 100000) {
-        balanceView.innerHTML = `<p>Balance: ${balance / 1000}K Cookies</p>`;
-    } else {
-        balanceView.innerHTML = `<p>Balance: ${balance} Cookies</p>`;
-    }
-
-    if (cookieValue >= 1000000) {
-        cookiePriceView.innerHTML = `<p>Cookie Value: ${cookieValue / 1000000}KK Cookies</p>`;
-    } else if (cookieValue >= 100000) {
-        cookiePriceView.innerHTML = `<p>Cookie Value: ${cookieValue / 1000}K Cookies</p>`;
-    } else {
-        cookiePriceView.innerHTML = `<p>Cookie Value: ${cookieValue} Cookies</p>`;
-    }
-
-    if (cookiesPerSecond >= 1000000) {
-        cookiesPerSecondView.innerHTML = `<p>Cookies/s: ${cookiesPerSecond / 1000000}KK Cookies</p>`;
-    } else if (cookiesPerSecond >= 100000) {
-        cookiesPerSecondView.innerHTML = `<p>Cookies/s: ${cookiesPerSecond / 1000}K Cookies</p>`;
-    } else {
-        cookiesPerSecondView.innerHTML = `<p>Cookies/s: ${cookiesPerSecond} Cookies</p>`;
-    }
+    balanceView.innerHTML = `<p>Balance: ${numeral(balance).format('0.00 a')} Cookies</p>`;
+    cookiePriceView.innerHTML = `<p>Cookie Value: ${numeral(cookieValue).format('0.00 a')} Cookies</p>`;
+    cookiesPerSecondView.innerHTML = `<p>Cookies/s: ${numeral(cookiesPerSecond).format('0.00 a')} Cookies</p>`;
 
     waifuBonusView.innerHTML = `<p>Bonus: ${waifusPower}%</p>`;
 
