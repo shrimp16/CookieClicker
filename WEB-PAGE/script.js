@@ -19,48 +19,66 @@ let buyWaifu = document.getElementById("buy-waifu");
 let ownedWaifu = document.getElementById("owned-waifu");
 let waifuPrice = document.getElementById("waifu-price");
 
+let price1 = document.getElementById("price1");
+
 let pages = document.getElementById("pages");
 
 let currentPage = 1;
 let waifuPointer = 0;
 
+
+//Default Values
 let balance = 0;
-let cookieValue = 1;
+let cookieValue = 10000000;
 let cookiesPerSecond = 0;
 
 //Prices
-const upgradePrice = 100;
-const prices = [
-    1000,
-    5000,
-    30000,
-    300000,
-    1000000,
-    5000000,
-    30000000
-]
+let upgradePrice = 100;
 
-//Cookies per second from each upgrade
-const production = [
-    10,
-    50,
-    300,
-    3000,
-    10000,
-    50000,
-    300000
+const structures = [
+    {
+        "amount": 0,
+        "name": "grandma",
+        "production": 10,
+        "price": 1000
+    },
+    {
+        "amount": 0,
+        "name": "mixing-machine",
+        "production": 50,
+        "price": 5000
+    },
+    {
+        "amount": 0,
+        "name": "shop",
+        "production": 300,
+        "price": 30000
+    },
+    {
+        "amount": 0,
+        "name": "building",
+        "production": 3000,
+        "price": 300000
+    },
+    {
+        "amount": 0,
+        "name": "island",
+        "production": 10000,
+        "price": 1000000
+    },
+    {
+        "amount": 0,
+        "name": "duper",
+        "production": 50000,
+        "price": 5000000
+    },
+    {
+        "amount": 0,
+        "name": "black-magic",
+        "production": 300000,
+        "price": 30000000
+    }
 ]
-
-//IDs of the buttons
-const buttonsID = [
-    "grandma",
-    "mixing-machine",
-    "shop",
-    "building",
-    "island",
-    "duper",
-    "black-magic"
-];
 
 let waifusPower = 0;
 const waifus = [
@@ -110,16 +128,10 @@ function update() {
     balanceView.innerHTML = `<p>Balance: ${numeral(balance).format('0.00 a')} Cookies</p>`;
     cookiePriceView.innerHTML = `<p>Cookie Value: ${numeral(cookieValue).format('0.00 a')} Cookies</p>`;
     cookiesPerSecondView.innerHTML = `<p>Cookies/s: ${numeral(cookiesPerSecond).format('0.00 a')} Cookies</p>`;
+        
+    price1.innerHTML = `<p>Price: ${structures[i].price}</p>`;
 
     waifuBonusView.innerHTML = `<p>Bonus: ${waifusPower}%</p>`;
-
-}
-
-function load() {
-
-}
-
-function update() {
 
 }
 
@@ -159,16 +171,14 @@ $("#upgrade").click(() => {
 })
 
 document.body.onload = () => {
-    for (let i = 0; i < buttonsID.length; i++) {
+    for (let i = 0; i < structures.length; i++) {
 
-        let id = buttonsID[i];
-        let price = prices[i];
-        let prod = production[i];
-
-        $(`#${id}`).click(() => {
-            if (balance >= price) {
-                balance = balance - price;
-                cookiesPerSecond = cookiesPerSecond + prod;
+        $(`#${structures[i].name}`).click(() => {
+            if (balance >= structures[i].price) {
+                balance = balance - structures[i].price;
+                cookiesPerSecond = cookiesPerSecond + structures[i].production;
+                //structures[i].price = Math.floor(structures[i].price + structures[i].price * 0.1);
+                structures[i].amount++;
                 update();
             } else {
                 notEnoughCookies();
