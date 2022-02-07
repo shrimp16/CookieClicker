@@ -115,6 +115,14 @@ function update() {
 
 }
 
+function load() {
+
+}
+
+function update() {
+
+}
+
 setInterval(() => {
     let waifuBonus = cookiesPerSecond * (waifusPower / 100);
     balance = balance + cookiesPerSecond + waifuBonus;
