@@ -14,22 +14,34 @@ app.use(function (req, res, next) {
     next();
 })
 
-app.get('/load/:user/:password', (req, res) => {
+app.get('/load/:id', (req, res) => {
 
-    let readUsers = fs.readFileSync("accounts.json");
-    let users = JSON.parse(readUsers);
+    let userValues = fs.readFileSync("Data/saves.json");
+    userValues = JSON.parse(userValues);
 
-    let readUserValues = fs.readFileSync("saves.json");
-    let userValues = JSON.parse(readUserValues);
+    res.send(userValues[req.params.id - 1]);
+
+})
+
+app.post('/login', (req, res) => {
 
     let id;
 
+    let username = req.body[0].username;
+    let password = req.body[0].password;
+
+    let users = fs.readFileSync("Data/accounts.json");
+    users = JSON.parse(users);
+    
     for(let i = 0; i < users.length; i++){
-        if(users[i].user === req.params.user && users[i].password === req.params.password){
-            id = users[i].id
+        if(username === users[i].user && password === users[i].password){
+            console.log(users[i].id);
+            id = users[i].id;
+        }else{
+            continue;
         }
     }
 
-    res.send(userValues[id - 1]);
-
+    res.send("The id is: " + id);
+    
 })
