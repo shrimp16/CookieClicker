@@ -7,6 +7,8 @@ app.listen(3000);
 
 app.use(bodyParser.json());
 
+app.use('/cookie', express.static("WEB-PAGE"));
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "DELETE, POST, GET, PUT, OPTIONS");

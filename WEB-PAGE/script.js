@@ -29,7 +29,7 @@ let waifuPointer = 0;
 
 //Default Values
 let balance = 0;
-let cookieValue = 10000000;
+let cookieValue = 1;
 let cookiesPerSecond = 0;
 
 //Prices
@@ -128,8 +128,6 @@ function update() {
     balanceView.innerHTML = `<p>Balance: ${numeral(balance).format('0.00 a')} Cookies</p>`;
     cookiePriceView.innerHTML = `<p>Cookie Value: ${numeral(cookieValue).format('0.00 a')} Cookies</p>`;
     cookiesPerSecondView.innerHTML = `<p>Cookies/s: ${numeral(cookiesPerSecond).format('0.00 a')} Cookies</p>`;
-        
-    price1.innerHTML = `<p>Price: ${structures[i].price}</p>`;
 
     waifuBonusView.innerHTML = `<p>Bonus: ${waifusPower}%</p>`;
 
