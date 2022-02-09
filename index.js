@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const { off } = require('process');
 
 app.listen(3000);
 
@@ -27,23 +28,18 @@ app.get('/load/:id', (req, res) => {
 
 app.post('/login', (req, res) => {
 
-    let id;
+    let data = fs.readFileSync('./Data/accounts.json');
+    let myObject = JSON.parse(data);
+    let id = "default";
 
-    let username = req.body[0].username;
-    let password = req.body[0].password;
-
-    let users = fs.readFileSync("Data/accounts.json");
-    users = JSON.parse(users);
-    
-    for(let i = 0; i < users.length; i++){
-        if(username === users[i].user && password === users[i].password){
-            console.log(users[i].id);
-            id = users[i].id;
-        }else{
-            continue;
+    for(var i = 0; i < myObject.length; i++){
+        if(myObject[i].user === req.body[0].username && myObject[i].password === req.body[0].password){
+            //201
+            res.send(`ID: ${myObject[i].id}`);
+            return;
         }
     }
 
-    res.send("The id is: " + id);
+    res.send("wrong");
     
 })
