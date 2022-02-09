@@ -16,5 +16,26 @@
       true,
       true
     ]
+  },
+  {
+    "id": 3,
+    "cookieValue": 1,
+    "balance": 0,
+    "structures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "waifus": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
   }
 ]

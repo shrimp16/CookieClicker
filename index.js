@@ -17,7 +17,44 @@ app.use(function (req, res, next) {
 })
 
 app.post('/register', (req, res) => {
+    
+    let currentUsersRaw = fs.readFileSync('./Data/accounts.json');
+    let currentUsers = JSON.parse(currentUsersRaw);
 
+    let newID = currentUsers.length + 1;
+
+    let newUser = {
+        "user" : req.body[0].user,
+        "password" : req.body[0].password,
+        "id" : newID
+    }
+
+    let currentSavesRaw = fs.readFileSync('./Data/saves.json');
+    let currentSaves = JSON.parse(currentSavesRaw);
+
+    let newBlankSave = {
+        "id" : newID,
+        "cookieValue" : 1,
+        "balance" : 0,
+        "structures": [0, 0, 0, 0, 0, 0, 0],
+        "waifus": [false, false, false, false, false]
+    };
+
+    currentUsers.push(newUser);
+
+    currentSaves.push(newBlankSave);
+
+    fs.writeFile('./Data/accounts.json', JSON.stringify(currentUsers, null, 2), (err) => {
+        if(err) throw err;
+        console.log("New user created");
+    })
+
+    fs.writeFile('./Data/saves.json', JSON.stringify(currentSaves, null, 2), err => {
+        if(err) throw err;
+        console.log("New save created");
+    })
+    
+    console.log(users);
 })
 
 app.post('/login', (req, res) => {

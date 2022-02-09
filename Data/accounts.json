@@ -1,12 +1,17 @@
 [
-    {
-        "user" : "shrimp",
-        "password" : "aiplobS123",
-        "id" : 1
-    },
-    {
-        "user" : "lol",
-        "password" : "aiplobS123",
-        "id" : 2
-    }
+  {
+    "user": "shrimp",
+    "password": "aiplobS123",
+    "id": 1
+  },
+  {
+    "user": "lol",
+    "password": "aiplobS123",
+    "id": 2
+  },
+  {
+    "user": "lmao",
+    "password": "123",
+    "id": 3
+  }
 ]
