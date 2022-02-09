@@ -1,9 +1,20 @@
 [
-    {
-    "id" : 1,
-    "cookieValue" : 1000,
-    "balance" : 100,
-    "structures" : [10, 10, 10, 10, 10, 10, 10],
-    "waifus": [true, true, true, true, true]
-    }
+  {
+    "id": 1,
+    "cookieValue": 12341234,
+    "balance": 1000,
+    "structures": [
+      10,
+      10,
+      10,
+      276
+    ],
+    "waifus": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  }
 ]
