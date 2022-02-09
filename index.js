@@ -21,6 +21,13 @@ app.post('/register', (req, res) => {
     let currentUsersRaw = fs.readFileSync('./Data/accounts.json');
     let currentUsers = JSON.parse(currentUsersRaw);
 
+    for(let i = 0; i < currentUsers.length; i++){
+        if(currentUsers[i].user === req.body[0].user){
+            res.send("User already exists");
+            return;
+        }
+    }
+
     let newID = currentUsers.length + 1;
 
     let newUser = {
@@ -53,8 +60,8 @@ app.post('/register', (req, res) => {
         if(err) throw err;
         console.log("New save created");
     })
-    
-    console.log(users);
+
+    res.send("User created with success");
 })
 
 app.post('/login', (req, res) => {
@@ -69,7 +76,7 @@ app.post('/login', (req, res) => {
         }
     }
 
-    res.send("wrong credentials");
+    res.send("Wrong credentials");
     
 })
 
@@ -91,6 +98,8 @@ app.post('/save/:id', (req, res) => {
             })
         }
     }
+
+    res.send("User values updated")
 
 })
 
