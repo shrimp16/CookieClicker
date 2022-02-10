@@ -1,3 +1,6 @@
+const API = "192.168.1.103/"
+let isLogged = false;
+
 // Properties to use to change the values on the display
 let balanceView = document.getElementById("balance");
 let cookiePriceView = document.getElementById("cookie-price");
@@ -133,6 +136,25 @@ function update() {
 
 }
 
+function loadWaifu() {
+
+    waifuImage.style.filter = "blur(10px) grayscale() invert()";
+
+    if(waifus[waifuPointer].obtained){
+        waifuImage.style.filter = "none";
+        buyWaifu.style.display = "none";
+        ownedWaifu.style.display = "block";
+        waifuPrice.style.display = "none";
+    }else{
+        buyWaifu.style.display = "flex";
+        buyWaifu.style.margin = "auto";
+        ownedWaifu.style.display = "none";
+        waifuPrice.innerText = `Price: ${waifus[waifuPointer].priceView}`;
+        waifuPrice.style.display = "block";
+    }
+    
+}
+
 setInterval(() => {
     let waifuBonus = cookiesPerSecond * (waifusPower / 100);
     balance = balance + cookiesPerSecond + waifuBonus;
@@ -260,20 +282,50 @@ $("#buy-waifu").click( () => {
     loadWaifu();
 })
 
-function loadWaifu() {
+$("#register").click( () => {
 
-    waifuImage.style.filter = "blur(10px) grayscale() invert()";
+    let newUsername = document.querySelector("#username").value;
+    let newPassword = document.querySelector("#password").value;
 
-    if(waifus[waifuPointer].obtained){
-        waifuImage.style.filter = "none";
-        buyWaifu.style.display = "none";
-        ownedWaifu.style.display = "block";
-        waifuPrice.style.display = "none";
-    }else{
-        buyWaifu.style.display = "flex";
-        buyWaifu.style.margin = "auto";
-        ownedWaifu.style.display = "none";
-        waifuPrice.innerText = `Price: ${waifus[waifuPointer].priceView}`;
-        waifuPrice.style.display = "block";
+    fetch("http://localhost:3000/register", {
+        method: "POST",
+        body: JSON.stringify({
+            "user": newUsername,
+            "password" : newPassword
+        }),
+        headers: {
+            "Content-type" : "application/json; charset=UTF-8"
+        }
+    }).then( (response) => {
+        document.querySelector("#username").value = "";
+        document.querySelector("#password").value = "";
+    })
+
+
+    /*var newAnime = $('#addForm').serializeArray();
+
+    if (currentList === 'watched') {
+        api = "http://localhost:3000/watched/create";
+        list = watchedList;
+    } else {
+        api = "http://localhost:3000/create"
+        list = showList;
     }
-}
+
+    fetch(api, {
+
+        method: "POST",
+
+        body: JSON.stringify({
+            name: newAnime[0].value
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+
+    })
+        .then((response) => {
+            $('#name').val("");
+            list();
+        });*/
+})

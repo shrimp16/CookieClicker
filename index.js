@@ -22,7 +22,7 @@ app.post('/register', (req, res) => {
     let currentUsers = JSON.parse(currentUsersRaw);
 
     for(let i = 0; i < currentUsers.length; i++){
-        if(currentUsers[i].user === req.body[0].user){
+        if(currentUsers[i].user === req.body.user){
             res.send("User already exists");
             return;
         }
@@ -31,8 +31,8 @@ app.post('/register', (req, res) => {
     let newID = currentUsers.length + 1;
 
     let newUser = {
-        "user" : req.body[0].user,
-        "password" : req.body[0].password,
+        "user" : req.body.user,
+        "password" : req.body.password,
         "id" : newID
     }
 
