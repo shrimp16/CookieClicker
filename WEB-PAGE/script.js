@@ -300,32 +300,4 @@ $("#register").click( () => {
         document.querySelector("#username").value = "";
         document.querySelector("#password").value = "";
     })
-
-
-    /*var newAnime = $('#addForm').serializeArray();
-
-    if (currentList === 'watched') {
-        api = "http://localhost:3000/watched/create";
-        list = watchedList;
-    } else {
-        api = "http://localhost:3000/create"
-        list = showList;
-    }
-
-    fetch(api, {
-
-        method: "POST",
-
-        body: JSON.stringify({
-            name: newAnime[0].value
-        }),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-
-    })
-        .then((response) => {
-            $('#name').val("");
-            list();
-        });*/
 })
