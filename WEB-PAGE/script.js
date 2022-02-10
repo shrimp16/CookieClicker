@@ -282,6 +282,10 @@ $("#buy-waifu").click( () => {
     loadWaifu();
 })
 
+function validate(answer) {
+    console.log(answer);
+}
+
 $("#register").click( () => {
 
     let newUsername = document.querySelector("#username").value;
@@ -296,8 +300,27 @@ $("#register").click( () => {
         headers: {
             "Content-type" : "application/json; charset=UTF-8"
         }
-    }).then( (response) => {
-        document.querySelector("#username").value = "";
-        document.querySelector("#password").value = "";
+    }).then(response => response.text()).then((answer) => {
+        validate(answer);
     })
+    //document.querySelector("#password").value = "";
+})
+
+$("#login").click( () => {
+
+    let username = document.querySelector("#username").value;
+    let password = document.querySelector("#password").value;
+
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        body: JSON.stringify({
+            "username": username,
+            "password": password
+        }),
+        headers: {
+            "Content-type" : "application/json; charset=UTF-8"
+        }
+    }).then(response => response.text()).then((answer) => {
+        validate(answer);
+    });
 })

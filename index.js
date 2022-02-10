@@ -61,7 +61,7 @@ app.post('/register', (req, res) => {
         console.log("New save created");
     })
 
-    res.send("User created with success");
+    res.send("ID: " + newID);
 })
 
 app.post('/login', (req, res) => {
@@ -69,13 +69,13 @@ app.post('/login', (req, res) => {
     let data = fs.readFileSync('./Data/accounts.json');
     let users = JSON.parse(data);
 
-    for(var i = 0; i < myObject.length; i++){
-        if(users[i].user === req.body[0].username && users[i].password === req.body[0].password){
-            res.send(`ID: ${myObject[i].id}`);
+    for(var i = 0; i < users.length; i++){
+        if(users[i].user === req.body.username && users[i].password === req.body.password){
+            res.send("ID: " + users[i].id);
             return;
         }
     }
-
+    
     res.send("Wrong credentials");
     
 })
