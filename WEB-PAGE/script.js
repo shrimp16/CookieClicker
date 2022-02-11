@@ -168,10 +168,14 @@ $("#account-button").click( () => {
 })
 
 $("#testeee").click( () => {
+    goBack();
+})
+
+function goBack() {
     goToAccount.style.display = "flex";
     accountManager.style.display = "none";
-    userPanel.style.display = "block"
-})
+    userPanel.style.display = "block";
+}
 
 $("#cookie").click(() => {
     let waifuBonusOnClick = cookieValue * (waifusPower / 100);
@@ -196,7 +200,6 @@ document.body.onload = () => {
             if (balance >= structures[i].price) {
                 balance = balance - structures[i].price;
                 cookiesPerSecond = cookiesPerSecond + structures[i].production;
-                //structures[i].price = Math.floor(structures[i].price + structures[i].price * 0.1);
                 structures[i].amount++;
                 update();
             } else {
@@ -321,7 +324,6 @@ $("#register").click( () => {
     }).then(response => response.text()).then((answer) => {
         validate(answer);
     })
-    //document.querySelector("#password").value = "";
 })
 
 $("#load").click( () => {
@@ -330,7 +332,14 @@ $("#load").click( () => {
 
 })
 
+$("#save").click( () => {
+    login(save);
+})
+
 function load(id){
+    document.querySelector("#password").value = "";
+    document.querySelector("#username").value = "";
+    goBack();
     fetch(`http://localhost:3000/load/${id}`)
     .then(response => response.json())
     .then((response) => {
@@ -339,19 +348,15 @@ function load(id){
         balance = response.balance;
         for(let i = 0; i < structures.length; i++){
             structures[i].amount = response.structures[i];
+            cookiesPerSecond = cookiesPerSecond + (structures[i].amount * structures[i].production);
         }
         for(let i = 0; i < waifus.length; i++){
             waifus[i].obtained = response.waifus[i];
         }
-        structuresLoad();
+        alert("Data loaded with success");
     })
 }
 
-function structuresLoad(){
-    for(let i = 0; i < structures.length; i++){
-        cookiesPerSecond = cookiesPerSecond + (structures[i].amount * structures[i].production);
-    }
-    console.log(structures);
-    console.log(cookieValue);
-    alert("update");
+function save() {
+    //WIP
 }
