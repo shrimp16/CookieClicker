@@ -61,7 +61,7 @@ app.post('/register', (req, res) => {
         console.log("New save created");
     })
 
-    res.send("ID: " + newID);
+    res.send("Account Created");
 })
 
 app.post('/login', (req, res) => {
@@ -71,7 +71,7 @@ app.post('/login', (req, res) => {
 
     for(var i = 0; i < users.length; i++){
         if(users[i].user === req.body.username && users[i].password === req.body.password){
-            res.send("ID: " + users[i].id);
+            res.send(`${users[i].id}`);
             return;
         }
     }
@@ -99,7 +99,7 @@ app.post('/save/:id', (req, res) => {
         }
     }
 
-    res.send("User values updated")
+    res.send("Saved status")
 
 })
 

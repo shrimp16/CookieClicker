@@ -183,7 +183,6 @@ $("#upgrade").click(() => {
     if (balance >= upgradePrice) {
         cookieValue++;
         balance = balance - upgradePrice;
-        document.getElementById("click-sound").play();
         update();
     } else {
         notEnoughCookies();
@@ -284,6 +283,25 @@ $("#buy-waifu").click( () => {
 
 function validate(answer) {
     console.log(answer);
+    alert();
+}
+
+function login(cb) {
+    let username = document.querySelector("#username").value;
+    let password = document.querySelector("#password").value;
+
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        body: JSON.stringify({
+            "username": username,
+            "password": password
+        }),
+        headers: {
+            "Content-type" : "application/json; charset=UTF-8"
+        }
+    }).then(response => response.text()).then((answer) => {
+        cb(answer);
+    });
 }
 
 $("#register").click( () => {
@@ -306,21 +324,34 @@ $("#register").click( () => {
     //document.querySelector("#password").value = "";
 })
 
-$("#login").click( () => {
+$("#load").click( () => {
 
-    let username = document.querySelector("#username").value;
-    let password = document.querySelector("#password").value;
+    login(load);
 
-    fetch("http://localhost:3000/login", {
-        method: "POST",
-        body: JSON.stringify({
-            "username": username,
-            "password": password
-        }),
-        headers: {
-            "Content-type" : "application/json; charset=UTF-8"
-        }
-    }).then(response => response.text()).then((answer) => {
-        validate(answer);
-    });
 })
+
+function load(id){
+    fetch(`http://localhost:3000/load/${id}`)
+    .then(response => response.json())
+    .then((response) => {
+        console.log(response);
+        cookieValue = response.cookieValue;
+        balance = response.balance;
+        for(let i = 0; i < structures.length; i++){
+            structures[i].amount = response.structures[i];
+        }
+        for(let i = 0; i < waifus.length; i++){
+            waifus[i].obtained = response.waifus[i];
+        }
+        structuresLoad();
+    })
+}
+
+function structuresLoad(){
+    for(let i = 0; i < structures.length; i++){
+        cookiesPerSecond = cookiesPerSecond + (structures[i].amount * structures[i].production);
+    }
+    console.log(structures);
+    console.log(cookieValue);
+    alert("update");
+}
