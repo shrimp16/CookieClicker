@@ -352,6 +352,9 @@ function load(id){
         }
         for(let i = 0; i < waifus.length; i++){
             waifus[i].obtained = response.waifus[i];
+            if(waifus[i].obtained){
+                waifusPower = waifusPower + waifus[i].bonus;
+            }
         }
         alert("Data loaded with success");
     })
