@@ -284,16 +284,15 @@ $("#buy-waifu").click( () => {
     loadWaifu();
 })
 
-function validate(answer) {
-    console.log(answer);
-    alert();
+function showAlert(answer) {
+    alert(answer);
 }
 
 function login(cb) {
     let username = document.querySelector("#username").value;
     let password = document.querySelector("#password").value;
 
-    fetch("http://localhost:3000/login", {
+    fetch("http://192.168.1.103:3000/login", {
         method: "POST",
         body: JSON.stringify({
             "username": username,
@@ -312,7 +311,7 @@ $("#register").click( () => {
     let newUsername = document.querySelector("#username").value;
     let newPassword = document.querySelector("#password").value;
 
-    fetch("http://localhost:3000/register", {
+    fetch("http://192.168.1.103:3000/register", {
         method: "POST",
         body: JSON.stringify({
             "user": newUsername,
@@ -340,7 +339,7 @@ function load(id){
     document.querySelector("#password").value = "";
     document.querySelector("#username").value = "";
     goBack();
-    fetch(`http://localhost:3000/load/${id}`)
+    fetch(`http://192.168.1.103:3000/load/${id}`)
     .then(response => response.json())
     .then((response) => {
         console.log(response);
@@ -356,10 +355,11 @@ function load(id){
                 waifusPower = waifusPower + waifus[i].bonus;
             }
         }
-        alert("Data loaded with success");
+        showAlert("Loaded data with success");
     })
 }
 
 function save() {
     //WIP
+    showAlert("Saving");
 }
