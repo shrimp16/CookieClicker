@@ -319,6 +319,7 @@ $("#register").click( () => {
         }
     }).then(response => response.text()).then((answer) => {
         alert(answer);
+        //Need to change a bit of the answer to use the save function here to fix a bug
     })
 })
 
@@ -375,7 +376,7 @@ function save(id) {
     fetch(`http://192.168.1.103:3000/save${id}`, {
         method: "POST",
         body: JSON.stringify({
-            "balance": balance,
+            "balance": balance
         }),
         headers: {
             "Content-type" : "application/json; charset=UTF-8"
