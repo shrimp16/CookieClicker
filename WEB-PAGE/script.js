@@ -284,11 +284,8 @@ $("#buy-waifu").click( () => {
     loadWaifu();
 })
 
-function showAlert(answer) {
-    alert(answer);
-}
-
 function login(cb) {
+
     let username = document.querySelector("#username").value;
     let password = document.querySelector("#password").value;
 
@@ -321,7 +318,7 @@ $("#register").click( () => {
             "Content-type" : "application/json; charset=UTF-8"
         }
     }).then(response => response.text()).then((answer) => {
-        validate(answer);
+        alert(answer);
     })
 })
 
@@ -332,7 +329,11 @@ $("#load").click( () => {
 })
 
 $("#save").click( () => {
-    login(save);
+
+    console.log(newStrucutures);
+    console.log(newWaifus);
+    //login(save);
+
 })
 
 function load(id){
@@ -342,7 +343,6 @@ function load(id){
     fetch(`http://192.168.1.103:3000/load/${id}`)
     .then(response => response.json())
     .then((response) => {
-        console.log(response);
         cookieValue = response.cookieValue;
         balance = response.balance;
         for(let i = 0; i < structures.length; i++){
@@ -355,11 +355,32 @@ function load(id){
                 waifusPower = waifusPower + waifus[i].bonus;
             }
         }
-        showAlert("Loaded data with success");
+        alert("Loaded data with success");
     })
 }
 
-function save() {
-    //WIP
-    showAlert("Saving");
+function save(id) {
+
+    let newStrucutures = [];
+    let newWaifus = [];
+
+    for(let i = 0; i < structures.length; i++){
+        newStrucutures.push(structures[i].amount);
+    }
+
+    for(let i = 0; i < waifus.length; i++) {
+        newWaifus.push(waifus[i].obtained);
+    }
+
+    fetch(`http://192.168.1.103:3000/save${id}`, {
+        method: "POST",
+        body: JSON.stringify({
+            "balance": balance,
+        }),
+        headers: {
+            "Content-type" : "application/json; charset=UTF-8"
+        }
+    }).then(response => response.text()).then((answer) => {
+        validate(answer);
+    })
 }
