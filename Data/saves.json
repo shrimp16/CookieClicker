@@ -2,7 +2,7 @@
   {
     "id": 1,
     "cookieValue": 100000000,
-    "balance": 1000,
+    "balance": 23686981000,
     "structures": [
       1000,
       1000,
@@ -10,7 +10,7 @@
       1000,
       1000,
       1000,
-      1000
+      1008
     ],
     "waifus": [
       true,
@@ -18,6 +18,27 @@
       true,
       true,
       true
+    ]
+  },
+  {
+    "id": 2,
+    "cookieValue": 14,
+    "balance": 0,
+    "structures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "waifus": [
+      false,
+      false,
+      false,
+      false,
+      false
     ]
   }
 ]

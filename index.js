@@ -86,12 +86,14 @@ app.post('/save/:id', (req, res) => {
     let data = fs.readFileSync('./Data/saves.json');
     var saves = JSON.parse(data);
 
+    console.log(saves);
+
     for(let i = 0; i < saves.length; i++){
         if(saves[i].id === parseInt(req.params.id)){
-            saves[i].cookieValue = req.body[0].cookieValue;
-            saves[i].cookieValue = req.body[0].balance;
-            saves[i].structures = req.body[0].structures;
-            saves[i].waifus = req.body[0].waifus;
+            saves[i].cookieValue = req.body.cookieValue;
+            saves[i].balance = req.body.balance;
+            saves[i].structures = req.body.structures;
+            saves[i].waifus = req.body.waifus;
             fs.writeFile('./Data/saves.json', JSON.stringify(saves, null, 2), (err) => {
                 if(err) throw err;
                 console.log("File Update");

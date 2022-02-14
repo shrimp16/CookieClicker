@@ -331,9 +331,7 @@ $("#load").click( () => {
 
 $("#save").click( () => {
 
-    console.log(newStrucutures);
-    console.log(newWaifus);
-    //login(save);
+    login(save);
 
 })
 
@@ -362,26 +360,30 @@ function load(id){
 
 function save(id) {
 
-    let newStrucutures = [];
-    let newWaifus = [];
+    let structuresToSave = [];
+    let waifusToSave = [];
 
     for(let i = 0; i < structures.length; i++){
-        newStrucutures.push(structures[i].amount);
+        structuresToSave.push(structures[i].amount);
     }
 
     for(let i = 0; i < waifus.length; i++) {
-        newWaifus.push(waifus[i].obtained);
+        waifusToSave.push(waifus[i].obtained);
     }
 
-    fetch(`http://192.168.1.103:3000/save${id}`, {
+    fetch(`http://192.168.1.103:3000/save/${id}`, {
         method: "POST",
         body: JSON.stringify({
-            "balance": balance
+            "cookieValue": cookieValue,
+            "balance": balance,
+            "structures": structuresToSave,
+            "waifus": waifusToSave
         }),
         headers: {
             "Content-type" : "application/json; charset=UTF-8"
         }
     }).then(response => response.text()).then((answer) => {
-        validate(answer);
+        alert(answer);
     })
+
 }
