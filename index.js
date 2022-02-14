@@ -16,6 +16,13 @@ app.use(function (req, res, next) {
     next();
 })
 
+app.get('/players', (req, res) => {
+    let userValues = fs.readFileSync("Data/saves.json");
+    userValues = JSON.parse(userValues);
+
+    res.send(userValues[req.params.id - 1]);
+})
+
 app.post('/register', (req, res) => {
     
     let currentUsersRaw = fs.readFileSync('./Data/accounts.json');
@@ -61,7 +68,7 @@ app.post('/register', (req, res) => {
         console.log("New save created");
     })
 
-    res.send("Account Created");
+    res.send(["Account Created", newID]);
 })
 
 app.post('/login', (req, res) => {

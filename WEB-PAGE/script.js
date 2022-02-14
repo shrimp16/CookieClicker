@@ -1,6 +1,3 @@
-const API = "192.168.1.103/"
-let isLogged = false;
-
 // Properties to use to change the values on the display
 let balanceView = document.getElementById("balance");
 let cookiePriceView = document.getElementById("cookie-price");
@@ -208,6 +205,8 @@ document.body.onload = () => {
         })
 
     }
+
+    alert("DISCLAIMER: When you register you lose everything you currently have && after saving you have to load again");
 }
 
 $("#next-page").click(() => {
@@ -318,7 +317,11 @@ $("#register").click( () => {
             "Content-type" : "application/json; charset=UTF-8"
         }
     }).then(response => response.text()).then((answer) => {
-        alert(answer);
+        if(answer[0] === "Account Created"){
+            alert(answer[0]);
+        }else{
+            alert(answer);
+        }
         //Need to change a bit of the answer to use the save function here to fix a bug
     })
 })
@@ -336,9 +339,10 @@ $("#save").click( () => {
 })
 
 function load(id){
+    
     document.querySelector("#password").value = "";
     document.querySelector("#username").value = "";
-    goBack();
+
     fetch(`http://192.168.1.103:3000/load/${id}`)
     .then(response => response.json())
     .then((response) => {
@@ -359,6 +363,9 @@ function load(id){
 }
 
 function save(id) {
+    
+    document.querySelector("#password").value = "";
+    document.querySelector("#username").value = "";
 
     let structuresToSave = [];
     let waifusToSave = [];

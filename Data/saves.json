@@ -1,16 +1,16 @@
 [
   {
     "id": 1,
-    "cookieValue": 100000000,
-    "balance": 23686981000,
+    "cookieValue": 1000000000000000,
+    "balance": 84000033789446660,
     "structures": [
-      1000,
-      1000,
-      1000,
-      1000,
-      1000,
-      1000,
-      1008
+      1005,
+      1001,
+      1005,
+      1007,
+      1003,
+      1002,
+      1026
     ],
     "waifus": [
       true,
@@ -23,6 +23,132 @@
   {
     "id": 2,
     "cookieValue": 14,
+    "balance": 0,
+    "structures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "waifus": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 3,
+    "cookieValue": 1,
+    "balance": 0,
+    "structures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "waifus": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 4,
+    "cookieValue": 1,
+    "balance": 0,
+    "structures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "waifus": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 5,
+    "cookieValue": 1,
+    "balance": 0,
+    "structures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "waifus": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 6,
+    "cookieValue": 1,
+    "balance": 0,
+    "structures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "waifus": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 7,
+    "cookieValue": 1,
+    "balance": 0,
+    "structures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "waifus": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 8,
+    "cookieValue": 1,
     "balance": 0,
     "structures": [
       0,
